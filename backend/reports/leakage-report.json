@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-03-20T02:41:06.383Z",
+  "trainPath": "/Users/gokhan/Desktop/NeoMagic /data/fine-tuning/neomagic-prompt-teknikleri-tr.train.jsonl",
+  "validPath": "/Users/gokhan/Desktop/NeoMagic /data/fine-tuning/neomagic-prompt-teknikleri-tr.valid.jsonl",
+  "exactLine": {
+    "trainUniqueLines": 90,
+    "validUniqueLines": 10,
+    "overlappingHashes": 0,
+    "pass": true
+  },
+  "userMessageFingerprint": {
+    "trainUnique": 90,
+    "validUnique": 10,
+    "overlappingFingerprints": 0,
+    "pass": true,
+    "note": "Same normalized first user utterance must not appear in both splits (prevents near-duplicate leakage)."
+  },
+  "temporalAndGroupAudit": {
+    "status": "not_applicable",
+    "reason": "JSONL rows have no timestamp or group_id; add fields to enable time-series or group-blocked splits."
+  },
+  "pass": true,
+  "note": "No exact-line or first-user-message overlap between train and valid."
+}

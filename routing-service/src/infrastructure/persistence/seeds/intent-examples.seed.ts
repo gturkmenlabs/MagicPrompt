@@ -1,0 +1,58 @@
+import type { IntentExample } from '../../../domain/routing/entities/intent-example.js';
+
+export const INTENT_EXAMPLES_SEED: IntentExample[] = [
+  {
+    id: 'ie-code-1',
+    prompt: 'Find memory leak in Node.js repo and patch it',
+    normalizedIntent: 'debug memory leak in repository with stack traces and fixes',
+    selectedFramework: 'code-agent',
+    successScore: 0.95,
+    tags: ['debug', 'repo', 'memory leak'],
+    createdAt: new Date('2025-11-01T10:00:00Z').toISOString(),
+  },
+  {
+    id: 'ie-sql-1',
+    prompt: 'Write SQL for retention dashboard by month',
+    normalizedIntent: 'sql query aggregation retention metrics dashboard',
+    selectedFramework: 'sql-agent',
+    successScore: 0.9,
+    tags: ['sql', 'analytics'],
+    createdAt: new Date('2025-11-03T10:00:00Z').toISOString(),
+  },
+  {
+    id: 'ie-rag-1',
+    prompt: 'Analyze this policy PDF and answer my compliance question',
+    normalizedIntent: 'document retrieval policy pdf grounded answer',
+    selectedFramework: 'rag-agent',
+    successScore: 0.88,
+    tags: ['pdf', 'policy', 'retrieval'],
+    createdAt: new Date('2025-11-04T10:00:00Z').toISOString(),
+  },
+  {
+    id: 'ie-search-1',
+    prompt: 'What are latest AI model releases this week?',
+    normalizedIntent: 'latest web search current announcements',
+    selectedFramework: 'search-agent',
+    successScore: 0.91,
+    tags: ['latest', 'web'],
+    createdAt: new Date('2025-11-05T10:00:00Z').toISOString(),
+  },
+  {
+    id: 'ie-summary-1',
+    prompt: 'Summarize meeting notes and extract action items',
+    normalizedIntent: 'summary bullet points action items extraction',
+    selectedFramework: 'summarizer-agent',
+    successScore: 0.93,
+    tags: ['summary', 'actions'],
+    createdAt: new Date('2025-11-06T10:00:00Z').toISOString(),
+  },
+  {
+    id: 'ie-workflow-1',
+    prompt: 'Create a flow to sync CRM updates to Slack daily',
+    normalizedIntent: 'multi-step workflow integrate sync send update',
+    selectedFramework: 'workflow-agent',
+    successScore: 0.87,
+    tags: ['workflow', 'integration'],
+    createdAt: new Date('2025-11-07T10:00:00Z').toISOString(),
+  },
+];

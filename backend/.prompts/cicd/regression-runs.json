@@ -1,0 +1,217 @@
+[
+  {
+    "id": "1d5bb303-3d43-42fc-ac8a-19b0abd5f2a6",
+    "orgId": "default",
+    "promptId": "cmlgonce30009ju04csqhzq32",
+    "version": "1.0.0",
+    "triggerType": "manual",
+    "status": "failed",
+    "config": {
+      "judgeThreshold": 60,
+      "lintMustPass": true,
+      "contractMustPass": true
+    },
+    "summary": {
+      "totalTests": 9,
+      "passed": 7,
+      "failed": 1,
+      "skipped": 1,
+      "errors": 0,
+      "gateResults": {
+        "judge": {
+          "passed": false,
+          "score": 51
+        },
+        "lint": {
+          "passed": true,
+          "errors": 0,
+          "warnings": 0
+        },
+        "contract": {
+          "passed": true,
+          "score": 100
+        },
+        "budget": {
+          "passed": true,
+          "costUsd": 0.00010624
+        }
+      },
+      "overallScore": 95
+    },
+    "startedAt": "2026-03-01T05:47:55.644Z",
+    "createdAt": "2026-03-01T05:47:55.644Z",
+    "completedAt": "2026-03-01T05:47:55.844Z"
+  },
+  {
+    "id": "50024612-9d34-4346-8157-a8eab4799402",
+    "orgId": "default",
+    "promptId": "cmlclefzg0001if04v3tuu43n",
+    "version": "1.0.0",
+    "triggerType": "manual",
+    "status": "failed",
+    "config": {
+      "judgeThreshold": 60,
+      "lintMustPass": true,
+      "contractMustPass": true
+    },
+    "summary": {
+      "totalTests": 9,
+      "passed": 7,
+      "failed": 1,
+      "skipped": 1,
+      "errors": 0,
+      "gateResults": {
+        "judge": {
+          "passed": false,
+          "score": 35
+        },
+        "lint": {
+          "passed": true,
+          "errors": 0,
+          "warnings": 2
+        },
+        "contract": {
+          "passed": true,
+          "score": 100
+        },
+        "budget": {
+          "passed": true,
+          "costUsd": 0.000010880000000000001
+        }
+      },
+      "overallScore": 93
+    },
+    "startedAt": "2026-03-01T05:48:06.034Z",
+    "createdAt": "2026-03-01T05:48:06.034Z",
+    "completedAt": "2026-03-01T05:48:06.118Z"
+  },
+  {
+    "id": "41dd6af4-c4a4-4ddb-8607-e0bb6a9cc1c0",
+    "orgId": "default",
+    "promptId": "cmlks9vgu0001l804hx3ztol5",
+    "version": "1.0.0",
+    "triggerType": "manual",
+    "status": "failed",
+    "config": {
+      "judgeThreshold": 60,
+      "lintMustPass": true,
+      "contractMustPass": true
+    },
+    "summary": {
+      "totalTests": 9,
+      "passed": 7,
+      "failed": 1,
+      "skipped": 1,
+      "errors": 0,
+      "gateResults": {
+        "judge": {
+          "passed": false,
+          "score": 38
+        },
+        "lint": {
+          "passed": true,
+          "errors": 0,
+          "warnings": 1
+        },
+        "contract": {
+          "passed": true,
+          "score": 100
+        },
+        "budget": {
+          "passed": true,
+          "costUsd": 0.000014560000000000001
+        }
+      },
+      "overallScore": 93
+    },
+    "startedAt": "2026-03-03T01:58:31.889Z",
+    "createdAt": "2026-03-03T01:58:31.889Z",
+    "completedAt": "2026-03-03T01:58:31.928Z"
+  },
+  {
+    "id": "16f12b47-c4f6-47da-a27f-32e30cfd2190",
+    "orgId": "default",
+    "promptId": "cmlks9vgu0001l804hx3ztol5",
+    "version": "1.0.0",
+    "triggerType": "manual",
+    "status": "failed",
+    "config": {
+      "judgeThreshold": 60,
+      "lintMustPass": true,
+      "contractMustPass": true
+    },
+    "summary": {
+      "totalTests": 9,
+      "passed": 7,
+      "failed": 1,
+      "skipped": 1,
+      "errors": 0,
+      "gateResults": {
+        "judge": {
+          "passed": false,
+          "score": 38
+        },
+        "lint": {
+          "passed": true,
+          "errors": 0,
+          "warnings": 1
+        },
+        "contract": {
+          "passed": true,
+          "score": 100
+        },
+        "budget": {
+          "passed": true,
+          "costUsd": 0.000014560000000000001
+        }
+      },
+      "overallScore": 93
+    },
+    "startedAt": "2026-03-03T01:58:46.309Z",
+    "createdAt": "2026-03-03T01:58:46.309Z",
+    "completedAt": "2026-03-03T01:58:46.347Z"
+  },
+  {
+    "id": "5979a12a-5a29-42e5-a632-3c02804c5291",
+    "orgId": "default",
+    "promptId": "cmlks9vgu0001l804hx3ztol5",
+    "version": "1.0.0",
+    "triggerType": "manual",
+    "status": "failed",
+    "config": {
+      "judgeThreshold": 60,
+      "lintMustPass": true,
+      "contractMustPass": true
+    },
+    "summary": {
+      "totalTests": 9,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 1,
+      "errors": 1,
+      "gateResults": {
+        "judge": {
+          "passed": false,
+          "score": 0
+        },
+        "lint": {
+          "passed": true,
+          "errors": 0,
+          "warnings": 1
+        },
+        "contract": {
+          "passed": true,
+          "score": 100
+        },
+        "budget": {
+          "passed": true,
+          "costUsd": 0.000014560000000000001
+        }
+      },
+      "overallScore": 89
+    },
+    "startedAt": "2026-03-09T21:21:03.836Z",
+    "createdAt": "2026-03-09T21:21:03.836Z",
+    "completedAt": "2026-03-09T21:21:03.879Z"
+  }
+]

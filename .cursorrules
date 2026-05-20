@@ -1,0 +1,20 @@
+You are an expert AI software engineer assisting in the NeoMagic project. Here are the core rules:
+
+# Project Environment
+- Project Root is cleanly organized. DO NOT create `.tsx`, `.ts`, or `.css` files on the root. All React application code belongs in `src/`.
+- We use absolute imports via the `@/` alias which points directly to `src/`. (e.g. `import X from '@/components/X'`).
+
+# Framework & Styling
+- React 19 + TypeScript + Vite.
+- Tailwind CSS v3. Use existing class names and colors defined in `tailwind.config.js`. You should favor modern "glassmorphism" or "cyber-dark" aesthetic classes which are already globally set.
+
+# Workflow for Vibe Coding
+1. **Always Check the Sandbox**: If editing UI, the `src/components/` folder holds the truth. Check for duplicates in the folder before reinventing (e.g. we have `ui/Button.tsx`).
+2. **Context First**: Always read `ARCHITECTURE.md` to understand high-level folder separations (like distinguishing `src/services` vs `server/routes`).
+3. **No Root Clutter**: When generating helper scripts, place them in `scripts/`. Do not pollute the root.
+4. **Think Step-By-Step**: When refactoring or making edits, prefer small, focused patches in `src/*` rather than touching the monolithic `App.tsx` unless necessary.
+
+# Vibe Coding Guidelines
+- Be concise in your code updates.
+- Use explicit types. Do not use `any` unless absolutely necessary and documented.
+- Stick to the unified backend service patterns in `src/services/` when performing API calls. Do not use standard `fetch` if an internal service wrapper exists.

@@ -1,0 +1,86 @@
+# NeoMagic — Tam Yerel Geliştirme Ortamı
+#
+# Kullanım:
+#   docker compose -f docker-compose.dev.yml up -d --build
+#
+# Servisler:
+#   app  → http://localhost:3000  (Vite dev server — HMR aktif)
+#   api  → http://localhost:4000  (Express API server)
+#   db   → localhost:5432         (PostgreSQL)
+#
+# İlk kurulumda:
+#   docker compose -f docker-compose.dev.yml up -d --build
+#   docker compose -f docker-compose.dev.yml logs -f
+
+services:
+
+  # ── PostgreSQL ───────────────────────────────────────────────────────────────
+  db:
+    image: postgres:16-alpine
+    container_name: neomagic_db
+    environment:
+      POSTGRES_DB: sr_dev
+      POSTGRES_USER: sr
+      POSTGRES_PASSWORD: sr
+    ports:
+      - "5432:5432"
+    volumes:
+      - sr_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sr -d sr_dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ── Express API ──────────────────────────────────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      target: api
+    container_name: neomagic_api
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: development
+      SR_API_PORT: "4000"
+      DATABASE_URL: postgresql://sr:sr@db:5432/sr_dev
+      SR_USE_DB_STORE: "true"
+    ports:
+      - "4000:4000"
+    volumes:
+      # Kaynak kodunu mount et — API'yi yeniden build etmeden değişiklikler yansır
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    command: npx tsx --watch server/index.ts
+
+  # ── Vite Frontend (HMR) ──────────────────────────────────────────────────────
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      target: web
+    container_name: neomagic_web
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: development
+      VITE_API_URL: http://localhost:4000
+    ports:
+      - "3000:3000"
+    volumes:
+      # Kaynak kodunu mount et — HMR çalışır
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - api
+    restart: unless-stopped
+    command: npx vite --host 0.0.0.0 --port 3000
+
+volumes:
+  sr_pgdata:

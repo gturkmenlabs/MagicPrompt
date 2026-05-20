@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Super Reasoning Prompt DSL",
+  "type": "object",
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["name", "version", "domain", "framework"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "domain": { "type": "string", "enum": ["e-commerce", "healthcare", "finance", "education", "legal", "creative", "technical", "marketing"] },
+        "framework": { "type": "string", "enum": ["claude-3-5-sonnet", "gpt-4o", "gemini-1.5-pro", "deepseek-r1", "grok-3"] },
+        "author": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "license": { "type": "string", "enum": ["MIT", "CC-BY-4.0", "commercial", "proprietary"] }
+      }
+    },
+    "intent": { "type": "string" },
+    "guards": { "type": "array" },
+    "style": { "type": "object" },
+    "outputFormat": { "type": "string", "enum": ["markdown", "json", "xml", "html", "yaml"] },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "input": { "type": "string" },
+          "output": { "type": "string" },
+          "explanation": { "type": "string" }
+        },
+        "required": ["input", "output"]
+      }
+    },
+    "evaluation": {
+      "type": "object",
+      "properties": {
+        "judgeCriteria": { "type": "array" },
+        "successMetrics": { "type": "array", "items": { "type": "string" } },
+        "minScore": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    }
+  },
+  "required": ["meta", "intent", "outputFormat"]
+}

@@ -1,0 +1,642 @@
+{
+  "promptId": "ci-suite",
+  "timestamp": "2026-05-20T09:57:20.169Z",
+  "summary": {
+    "passed": 105,
+    "failed": 0,
+    "total": 105
+  },
+  "results": [
+    {
+      "testName": "contract:ci-backend-kernel",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 1
+    },
+    {
+      "testName": "godmode_format:ci-backend-kernel",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-backend-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-backend-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-backend-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-backend-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-backend-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-backend-react",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-backend-react",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-backend-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-backend-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 1
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-backend-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-backend-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-backend-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-backend-risen",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-backend-risen",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-backend-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-backend-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-backend-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-backend-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-backend-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-frontend-kernel",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-frontend-kernel",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-frontend-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-frontend-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-frontend-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-frontend-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-frontend-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-frontend-react",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-frontend-react",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-frontend-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-frontend-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-frontend-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-frontend-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-frontend-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-frontend-risen",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-frontend-risen",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-frontend-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-frontend-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-frontend-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-frontend-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-frontend-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-ml-ai-kernel",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-ml-ai-kernel",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-ml-ai-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-ml-ai-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-ml-ai-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-ml-ai-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-ml-ai-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-ml-ai-react",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-ml-ai-react",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-ml-ai-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-ml-ai-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-ml-ai-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-ml-ai-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-ml-ai-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-ml-ai-risen",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-ml-ai-risen",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-ml-ai-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-ml-ai-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-ml-ai-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-ml-ai-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-ml-ai-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-architecture-kernel",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-architecture-kernel",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-architecture-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-architecture-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-architecture-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-architecture-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-architecture-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-architecture-react",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-architecture-react",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-architecture-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-architecture-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-architecture-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-architecture-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-architecture-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-architecture-risen",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-architecture-risen",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-architecture-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-architecture-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-architecture-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-architecture-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-architecture-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-testing-kernel",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-testing-kernel",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-testing-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-testing-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-testing-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-testing-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-testing-kernel",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-testing-react",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-testing-react",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-testing-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-testing-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-testing-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-testing-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-testing-react",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "contract:ci-testing-risen",
+      "passed": true,
+      "message": "Contract validation passed (100/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "godmode_format:ci-testing-risen",
+      "passed": true,
+      "message": "God Mode format OK (50/100)",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_injection:ci-testing-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_injection' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_jailbreak:ci-testing-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_jailbreak' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_exfiltration:ci-testing-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_exfiltration' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_tool_poison:ci-testing-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_tool_poison' passed",
+      "durationMs": 0
+    },
+    {
+      "testName": "adversarial:adversarial_encoding:ci-testing-risen",
+      "passed": true,
+      "message": "Adversarial test 'adversarial_encoding' passed",
+      "durationMs": 0
+    }
+  ],
+  "failures": []
+}

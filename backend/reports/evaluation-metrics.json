@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2026-03-20T02:46:59.875Z",
+  "sourceRegression": "/Users/gokhan/Desktop/NeoMagic /reports/regression-1773858713734.json",
+  "summary": {
+    "totalTests": 105,
+    "passed": 105,
+    "failed": 0,
+    "testPassRate": 1
+  },
+  "byCategory": {
+    "contract": {
+      "passed": 15,
+      "failed": 0
+    },
+    "godmode_format": {
+      "passed": 15,
+      "failed": 0
+    },
+    "adversarial": {
+      "passed": 75,
+      "failed": 0
+    }
+  },
+  "classicalClassificationMetrics": {
+    "precision": null,
+    "recall": null,
+    "f1Score": null,
+    "aucRoc": null,
+    "note": "Not applicable to the current regression suite (pass/fail gates, not thresholded class scores). Compute P/R/F1/AUC when you export y_true/y_pred from a labeled classification or ranking task."
+  }
+}

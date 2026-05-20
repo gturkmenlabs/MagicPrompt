@@ -1,0 +1,118 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.local
+.env.*.local
+.mcp.json
+
+# Local assistant/browser state
+.codex/
+.claude/
+.cursor/
+.playwright-cli/
+
+# Local caches and backups
+__pycache__/
+*.pyc
+*.bak
+
+# Prompt-as-Code store (optional; .prompts/ can be committed for versioning)
+# .prompts
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Auto-generated entries
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+dist-server/
+dist-server-cjs/
+dist-deploy/
+output/
+ui-analysis-report/
+playwright-report/
+playwright-shots/
+test-results/
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+**/.DS_Store
+Thumbs.db
+._*
+**/._*
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Sensitive files (auto-detected)
+.env
+node_modules
+
+# Large files (exceed GitHub 100MB limit)
+*.tar.gz
+*.zip
+.archive-zips/
+.archive-data/*.csv
+super-reasoning-deploy.tar.gz
+super-reasoning-latest.tar.gz
+tsc_check.txt
+tsc_errors.txt
+tsc_output.txt
+
+# Local Python / vendor checkouts (reproducible via docs or setup scripts)
+.venv-qwen-agent/
+
+# Continuous learning log (may contain user prompts; do not commit to public repos)
+data/self-learning-events.ndjson
+src/data/self-learning-events.ndjson
+
+# Large model weights / exports (use private artifact store)
+models/**/*.pt
+models/**/*.bin
+models/**/*.onnx
+models/**/*.safetensors
+models/exports/
+archive/obsolete_root/Qwen-Agent-main
+archive/obsolete_root/Qwen-Agent-main
+archive/obsolete_root/Qwen-Agent-main
+Qwen-Agent-main/

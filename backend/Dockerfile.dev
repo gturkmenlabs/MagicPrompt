@@ -1,0 +1,40 @@
+# NeoMagic — Geliştirme Dockerfile (multi-stage)
+#
+# Target: api  → Express API (tsx --watch)
+# Target: web  → Vite frontend (HMR)
+#
+# docker-compose.dev.yml tarafından kullanılır.
+
+# ── Ortak base ──────────────────────────────────────────────────────────────────
+FROM node:22-alpine AS base
+
+WORKDIR /app
+
+# Bağımlılıkları önce kopyala (cache katmanı)
+COPY package.json package-lock.json* .npmrc* ./
+RUN npm ci --legacy-peer-deps && npm cache clean --force
+
+# Kaynak kodu compose volume ile gelecek;
+# COPY . . yerine yalnızca tsconfig ve tip dosyalarını ekle
+# (volume mount'ta bunlar da zaten yazılır)
+COPY tsconfig.json ./
+
+# ── API target ──────────────────────────────────────────────────────────────────
+FROM base AS api
+
+ENV NODE_ENV=development
+ENV SR_API_PORT=4000
+EXPOSE 4000
+
+# Volume mount'ta kaynak kodu /app'e gelecek.
+# Komut docker-compose.dev.yml'den geliyor: npx tsx --watch server/index.ts
+CMD ["npx", "tsx", "--watch", "server/index.ts"]
+
+# ── Web (Vite) target ────────────────────────────────────────────────────────────
+FROM base AS web
+
+ENV NODE_ENV=development
+EXPOSE 3000
+
+# Komut docker-compose.dev.yml'den geliyor: npx vite --host 0.0.0.0 --port 3000
+CMD ["npx", "vite", "--host", "0.0.0.0", "--port", "3000"]

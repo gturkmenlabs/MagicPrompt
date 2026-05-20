@@ -1,0 +1,33 @@
+# Super Reasoning — Production (Hostinger VPS / MCP)
+# Hostinger repo clone sonrasi: docker compose up -d
+# Port 4000; Nginx veya firewall ile 80/443 yonlendirilebilir.
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
+        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY}
+        VITE_API_KEY: ${VITE_API_KEY}
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL}
+        VITE_ADMIN_EMAIL: ${VITE_ADMIN_EMAIL}
+        VITE_ADMIN_PASSWORD: ${VITE_ADMIN_PASSWORD}
+        VITE_GROQ_API_KEY: ${GROQ_API_KEY}
+        VITE_HUGGING_FACE_HUB_TOKEN: ${HUGGING_FACE_HUB_TOKEN}
+        VITE_GEMINI_API_KEY: ${GEMINI_API_KEY}
+        VITE_OPENAI_API_KEY: ${OPENAI_API_KEY}
+        VITE_DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY}
+        VITE_OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+        VITE_ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+        VITE_OLLAMA_URL: ${OLLAMA_URL}
+        VITE_MISTRAL_API_KEY: ${MISTRAL_API_KEY}
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - SR_API_PORT=4000
+    restart: unless-stopped

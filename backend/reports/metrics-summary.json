@@ -1,0 +1,63 @@
+{
+  "generatedAt": "2026-03-20T02:42:37.635Z",
+  "qualityDashboard": {
+    "compositeScore": 100,
+    "availability": {
+      "ok": true,
+      "statusCode": 200,
+      "detail": "Backend health assumed OK for offline quality aggregation"
+    },
+    "security": {
+      "score": 100,
+      "passed": 35,
+      "total": 35,
+      "detail": "35/35 adversarial+canary checks passed"
+    },
+    "consistency": {
+      "passRate": 100,
+      "varianceNote": "Single-run consistency; compare consecutive runs for variance tracking"
+    },
+    "typecheck": {
+      "maxErrors": 0,
+      "detail": "Typecheck budget set to 0"
+    }
+  },
+  "leakage": {
+    "pass": true,
+    "exactLine": {
+      "trainUniqueLines": 90,
+      "validUniqueLines": 10,
+      "overlappingHashes": 0,
+      "pass": true
+    },
+    "userMessageFingerprint": {
+      "trainUnique": 90,
+      "validUnique": 10,
+      "overlappingFingerprints": 0,
+      "pass": true,
+      "note": "Same normalized first user utterance must not appear in both splits (prevents near-duplicate leakage)."
+    },
+    "temporalAndGroupAudit": {
+      "status": "not_applicable",
+      "reason": "JSONL rows have no timestamp or group_id; add fields to enable time-series or group-blocked splits."
+    }
+  },
+  "evaluation": {
+    "testPassRate": 1,
+    "totalTests": 105,
+    "passed": 105,
+    "failed": 0,
+    "classicalClassificationMetrics": {
+      "precision": null,
+      "recall": null,
+      "f1Score": null,
+      "aucRoc": null,
+      "note": "Not applicable to the current regression suite (pass/fail gates, not thresholded class scores). Compute P/R/F1/AUC when you export y_true/y_pred from a labeled classification or ranking task."
+    }
+  },
+  "regression": {
+    "passed": 105,
+    "failed": 0,
+    "total": 105
+  }
+}

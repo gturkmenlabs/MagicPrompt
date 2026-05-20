@@ -1,0 +1,252 @@
+/**
+ * Semantic Cache + Prompt Fingerprinting
+ * @see docs/PROMPT_LEADERSHIP_ROADMAP.md §7
+ * @see docs/adr/ADR-001-cache-architecture.md
+ *
+ * Intent + domain + framework + style profile + model → hash.
+ *
+ * v3.x: in-memory Jaccard. v4: when `FF_ADVANCED_CACHE=true`, delegates to
+ * AdvancedCache (L1 LRU → L2 Redis → L3 pgvector). Flag default OFF; legacy
+ * behavior fully preserved when off.
+ */
+
+import type { PromptResponse } from '../types';
+import { featureFlags } from '../config/featureFlags';
+import { AdvancedCache } from './cache/advancedCache';
+
+export interface CacheEntry {
+  fingerprint: string;
+  response: PromptResponse;
+  createdAt: number;
+  hitCount: number;
+  intent: string;
+  domainId: string;
+  framework: string;
+  provider: string;
+  styleProfileId?: string;
+}
+
+export interface CacheStats {
+  totalEntries: number;
+  totalHits: number;
+  totalMisses: number;
+  hitRate: number;
+}
+
+/** Basit hash fonksiyonu (non-crypto, hizli fingerprint) */
+function simpleHash(str: string): string {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return Math.abs(hash).toString(36);
+}
+
+/**
+ * Prompt fingerprint uret.
+ * Intent kelimelerini normalize et + domain + framework + provider → hash.
+ */
+export function generateFingerprint(
+  intent: string,
+  domainId: string,
+  framework: string,
+  provider: string,
+  styleProfileId?: string
+): string {
+  // Normalize: lowercase, trim, remove punctuation, sort words (order-independent)
+  const normalizedIntent = intent
+    .toLowerCase()
+    .replace(/[^\w\sgusiocGUSIOC]/g, '')
+    .split(/\s+/)
+    .filter(Boolean)
+    .sort()
+    .join(' ');
+
+  const key = `${normalizedIntent}|${domainId}|${framework}|${provider}|${styleProfileId ?? ''}`;
+  return simpleHash(key);
+}
+
+/**
+ * Benzerlik skoru (Jaccard similarity, kelime bazli).
+ */
+export function intentSimilarity(a: string, b: string): number {
+  const wordsA = new Set(a.toLowerCase().split(/\s+/).filter(Boolean));
+  const wordsB = new Set(b.toLowerCase().split(/\s+/).filter(Boolean));
+  if (wordsA.size === 0 && wordsB.size === 0) return 1;
+
+  let intersection = 0;
+  for (const w of wordsA) {
+    if (wordsB.has(w)) intersection++;
+  }
+  const union = wordsA.size + wordsB.size - intersection;
+  return union > 0 ? intersection / union : 0;
+}
+
+// --- In-memory cache ---
+
+const MAX_CACHE_SIZE = 100;
+const CACHE_TTL_MS = 30 * 60 * 1000; // 30 dakika
+const SIMILARITY_THRESHOLD = 0.7; // Jaccard >= 0.7 → cache hit
+
+let cache: Map<string, CacheEntry> = new Map();
+let stats = { totalHits: 0, totalMisses: 0 };
+
+// --- v4 advanced cache delegate (opt-in via FF_ADVANCED_CACHE) ---
+
+let advanced: AdvancedCache | null = null;
+
+/** Inject a configured AdvancedCache (with real L2/L3 adapters from backend). */
+export function setAdvancedCache(instance: AdvancedCache | null): void {
+  advanced = instance;
+}
+
+function useAdvanced(): AdvancedCache | null {
+  return featureFlags.advancedCache ? advanced : null;
+}
+
+/**
+ * Cache'e bak: exact match (fingerprint) veya semantic match (similarity).
+ */
+export function cacheGet(
+  intent: string,
+  domainId: string,
+  framework: string,
+  provider: string,
+  styleProfileId?: string
+): CacheEntry | null {
+  const fp = generateFingerprint(intent, domainId, framework, provider, styleProfileId);
+  const now = Date.now();
+
+  // 1) Exact match
+  const exact = cache.get(fp);
+  if (exact && (now - exact.createdAt) < CACHE_TTL_MS) {
+    exact.hitCount++;
+    stats.totalHits++;
+    return exact;
+  }
+
+  // 2) Semantic match (benzer intent)
+  for (const entry of cache.values()) {
+    if (
+      entry.domainId === domainId &&
+      entry.framework === framework &&
+      entry.provider === provider &&
+      (entry.styleProfileId ?? '') === (styleProfileId ?? '') &&
+      (now - entry.createdAt) < CACHE_TTL_MS
+    ) {
+      const sim = intentSimilarity(intent, entry.intent);
+      if (sim >= SIMILARITY_THRESHOLD) {
+        entry.hitCount++;
+        stats.totalHits++;
+        return entry;
+      }
+    }
+  }
+
+  stats.totalMisses++;
+  return null;
+}
+
+/**
+ * Cache'e yaz.
+ */
+export function cachePut(
+  intent: string,
+  domainId: string,
+  framework: string,
+  provider: string,
+  response: PromptResponse,
+  styleProfileId?: string
+): void {
+  const fp = generateFingerprint(intent, domainId, framework, provider, styleProfileId);
+
+  // Eviction: en eski girisleri delete
+  if (cache.size >= MAX_CACHE_SIZE) {
+    let oldestKey: string | null = null;
+    let oldestTime = Infinity;
+    for (const [key, entry] of cache) {
+      if (entry.createdAt < oldestTime) {
+        oldestTime = entry.createdAt;
+        oldestKey = key;
+      }
+    }
+    if (oldestKey) cache.delete(oldestKey);
+  }
+
+  cache.set(fp, {
+    fingerprint: fp,
+    response,
+    createdAt: Date.now(),
+    hitCount: 0,
+    intent,
+    domainId,
+    framework,
+    provider,
+    styleProfileId,
+  });
+}
+
+/**
+ * Cache istatistikleri.
+ */
+export function getCacheStats(): CacheStats {
+  const total = stats.totalHits + stats.totalMisses;
+  return {
+    totalEntries: cache.size,
+    totalHits: stats.totalHits,
+    totalMisses: stats.totalMisses,
+    hitRate: total > 0 ? Math.round((stats.totalHits / total) * 100) : 0,
+  };
+}
+
+/**
+ * Cache clear.
+ */
+export function cacheClear(): void {
+  cache = new Map();
+  stats = { totalHits: 0, totalMisses: 0 };
+  const adv = advanced;
+  if (adv) adv._l1ForTests().clear();
+}
+
+// ─── v4 async API ─────────────────────────────────────────────────────────────
+// Use these in new code. Falls back to legacy in-memory cache when feature flag
+// is off or no AdvancedCache is wired.
+
+export async function cacheGetAsync(
+  intent: string,
+  domainId: string,
+  framework: string,
+  provider: string,
+  styleProfileId?: string,
+): Promise<CacheEntry | null> {
+  const adv = useAdvanced();
+  if (adv) {
+    const hit = await adv.get({ intent, domainId, framework, provider, styleProfileId });
+    if (hit) {
+      stats.totalHits++;
+      return hit.entry;
+    }
+    stats.totalMisses++;
+    return null;
+  }
+  return cacheGet(intent, domainId, framework, provider, styleProfileId);
+}
+
+export async function cachePutAsync(
+  intent: string,
+  domainId: string,
+  framework: string,
+  provider: string,
+  response: PromptResponse,
+  styleProfileId?: string,
+): Promise<void> {
+  const adv = useAdvanced();
+  if (adv) {
+    await adv.put({ intent, domainId, framework, provider, styleProfileId }, response);
+    return;
+  }
+  cachePut(intent, domainId, framework, provider, response, styleProfileId);
+}

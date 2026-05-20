@@ -1,0 +1,37 @@
+{
+  "name": "super-reasoning-monorepo",
+  "private": true,
+  "version": "3.2.0",
+  "type": "module",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=frontend",
+    "dev:all": "concurrently -n api,web -c blue,green \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\"",
+    "dev:all:safe": "bash backend/scripts/dev-all-with-healthcheck.sh",
+    "build": "npm run build --workspace=frontend",
+    "build:all": "npm run build --workspace=shared && npm run build --workspace=frontend && npm run build --workspace=backend",
+    "typecheck": "npm run typecheck --workspace=frontend && npm run typecheck --workspace=backend && npm run typecheck --workspace=shared",
+    "typecheck:budget": "node backend/scripts/typecheck-budget.mjs",
+    "test": "npm run test --workspace=frontend",
+    "test:run": "npm run test:run --workspace=frontend",
+    "test:api:smoke": "npm run test:api:smoke --workspace=backend",
+    "test:e2e:smoke": "npm run test:e2e:smoke --workspace=frontend",
+    "regression": "npm run regression --workspace=backend",
+    "regression:ci": "npm run regression:ci --workspace=backend",
+    "api": "npm run dev --workspace=backend",
+    "db:setup": "npm run db:setup --workspace=backend",
+    "db:seed": "npm run db:seed --workspace=backend",
+    "migrate:up": "npm run migrate:up --workspace=backend",
+    "migrate:down": "npm run migrate:down --workspace=backend",
+    "mcp:server": "npm run mcp:server --workspace=backend",
+    "routing:up": "npm --prefix routing-service run up"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "~5.8.2"
+  }
+}

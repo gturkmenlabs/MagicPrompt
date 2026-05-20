@@ -1,0 +1,27 @@
+{
+  "model_id": "REPLACE_ME_ft_001",
+  "base_model": "gpt-4o-mini",
+  "created_at": "2026-03-20T00:00:00.000Z",
+  "dataset": {
+    "name": "neomagic-prompt-teknikleri-tr",
+    "train_path": "data/fine-tuning/neomagic-prompt-teknikleri-tr.train.jsonl",
+    "valid_path": "data/fine-tuning/neomagic-prompt-teknikleri-tr.valid.jsonl",
+    "test_path": "",
+    "lineage_version": "1",
+    "leakage_check": "reports/leakage-report.json"
+  },
+  "training": {
+    "job_id": "",
+    "hyperparameters": {},
+    "trained_tokens": 0
+  },
+  "evaluation": {
+    "regression_pass_rate": null,
+    "canary_pass_rate": null,
+    "composite_score": null,
+    "adversarial_pass_rate": null
+  },
+  "intended_use": "NeoMagic içi master prompt derleme yardımı; otomatik karar veya yüksek riskli alanlarda tek başına kullanılmamalıdır.",
+  "limitations": "Eğitim verisi ve taban modele bağlı hatalar; Türkçe/İngilizce karışık girdilerde kalite değişebilir.",
+  "bias_and_safety": "Üretim öncesi adversarial ve içerik politikası kontrolleri çalıştırılmalıdır."
+}

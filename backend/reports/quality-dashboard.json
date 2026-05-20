@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-03-20T02:31:06.817Z",
+  "availability": {
+    "ok": true,
+    "statusCode": 200,
+    "detail": "Backend health assumed OK for offline quality aggregation"
+  },
+  "security": {
+    "score": 100,
+    "passed": 35,
+    "total": 35,
+    "detail": "35/35 adversarial+canary checks passed"
+  },
+  "coverage": {
+    "promptCount": 15,
+    "totalTests": 105,
+    "detail": "105 tests in latest regression run"
+  },
+  "consistency": {
+    "passRate": 100,
+    "varianceNote": "Single-run consistency; compare consecutive runs for variance tracking"
+  },
+  "typecheck": {
+    "maxErrors": 0,
+    "detail": "Typecheck budget set to 0"
+  },
+  "compositeScore": 100
+}

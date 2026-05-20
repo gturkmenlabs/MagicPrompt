@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="NeoMagic is a professional AI workspace for prompt design, model routing, retrieval workflows, quality checks, and reusable AI operations." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="theme-color" content="#05060d" />
+  <meta property="og:title" content="NeoMagic — Prompt OS" />
+  <meta property="og:description"
+    content="Create, route, evaluate, and reuse production AI prompts from one workspace." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/banner.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NeoMagic — Prompt OS" />
+  <meta name="twitter:description"
+    content="Create, route, evaluate, and reuse production AI prompts from one workspace." />
+  <link rel="canonical" href="https://neomagic.ai/" />
+  <title>NeoMagic — Prompt OS</title>
+  <link rel="icon" type="image/png" href="/assets/banner.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      /* Cyber gradient design tokens (from NeoMagic design handoff) */
+      --bg-base: #05060d;
+      --bg-deep: #02030a;
+      --neon-violet: #8B5CF6;
+      --neon-cyan: #00D4FF;
+      --neon-mint: #00FF9F;
+      --scan-opacity: 0.18;
+
+      /* Loading shell tokens */
+      --shell-bg: #05060d;
+      --shell-surface: #0E101E;
+      --shell-surface-elevated: #16192D;
+      --shell-border: rgba(139, 92, 246, 0.18);
+      --shell-text: #F2F3FA;
+      --shell-text-secondary: #A4A8C2;
+      --shell-text-muted: #6B6F88;
+      --shell-accent: #8B5CF6;
+      --shell-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+      --shell-radius: 14px;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg-deep);
+      color: var(--shell-text);
+      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      color-scheme: dark;
+    }
+
+    #root {
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── Cyber background layers ─────────────────────────── */
+    .cyber-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+        radial-gradient(ellipse 80% 60% at 15% 10%, rgba(139, 92, 246, 0.18), transparent 60%),
+        radial-gradient(ellipse 70% 50% at 85% 90%, rgba(0, 212, 255, 0.14), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(0, 255, 159, 0.05), transparent 70%),
+        linear-gradient(180deg, #05060d 0%, #02030a 100%);
+      background-size: 56px 56px, 56px 56px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+      animation: cyber-grid-pulse 12s ease-in-out infinite;
+    }
+
+    @keyframes cyber-grid-pulse {
+      0%, 100% { opacity: 0.85; }
+      50%      { opacity: 1; }
+    }
+
+    .cyber-scanline {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 2px;
+      z-index: 9998;
+      pointer-events: none;
+      background: linear-gradient(to bottom, transparent, rgba(0, 212, 255, 0.55), transparent);
+      opacity: var(--scan-opacity);
+      animation: cyber-scan 6s linear infinite;
+    }
+
+    @keyframes cyber-scan {
+      0%   { transform: translateY(-100vh); }
+      100% { transform: translateY(100vh); }
+    }
+
+    .cyber-noise {
+      position: fixed;
+      inset: 0;
+      z-index: 9997;
+      pointer-events: none;
+      opacity: 0.25;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cyber-bg { animation: none; }
+      .cyber-scanline { animation: none; opacity: 0; }
+    }
+
+    .html-shell {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+    }
+
+    .html-shell__panel {
+      width: min(100%, 440px);
+      border: 1px solid var(--shell-border);
+      border-radius: var(--shell-radius);
+      background: linear-gradient(180deg, rgba(22, 25, 45, 0.85) 0%, rgba(10, 12, 24, 0.92) 100%);
+      box-shadow: var(--shell-shadow);
+      padding: 32px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .html-shell__panel::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--neon-violet), var(--neon-cyan), transparent);
+      opacity: 0.7;
+    }
+
+    .html-shell__eyebrow {
+      margin: 0 0 12px;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--shell-accent);
+    }
+
+    .html-shell__title {
+      margin: 0;
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      font-size: 34px;
+      line-height: 1.08;
+      font-weight: 650;
+      letter-spacing: 0;
+      color: var(--shell-text);
+    }
+
+    .html-shell__body {
+      margin: 16px 0 0;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--shell-text-secondary);
+    }
+
+    .html-shell__status {
+      margin-top: 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .html-shell__spinner {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 2px solid rgba(139, 92, 246, 0.12);
+      border-top-color: var(--neon-cyan);
+      animation: shell-spin 0.8s linear infinite;
+      box-shadow: 0 0 12px rgba(0, 212, 255, 0.35);
+    }
+
+    .html-shell__label {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--shell-text-muted);
+    }
+
+    .html-shell__code {
+      display: inline-block;
+      margin-top: 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      background: rgba(0, 212, 255, 0.08);
+      padding: 8px 14px;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 12px;
+      color: var(--neon-cyan);
+    }
+
+    @keyframes shell-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cyber-bg"></div>
+  <div class="cyber-noise"></div>
+  <div class="cyber-scanline"></div>
+  <div id="root">
+    <div data-loading="true" class="html-shell">
+      <div class="html-shell__panel">
+        <p class="html-shell__eyebrow">NEOMAGIC // PROMPT OS</p>
+        <h1 class="html-shell__title">Loading workspace</h1>
+        <p class="html-shell__body">Preparing the application shell and restoring your workspace state.</p>
+        <div class="html-shell__status">
+          <div class="html-shell__spinner"></div>
+          <span class="html-shell__label">Starting application</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/index.tsx"></script>
+  <noscript>
+    <div class="html-shell">
+      <div class="html-shell__panel">
+        <p class="html-shell__eyebrow">NEOMAGIC // PROMPT OS</p>
+        <h1 class="html-shell__title">JavaScript is required</h1>
+        <p class="html-shell__body">Enable JavaScript to open the product interface and continue into the workspace.</p>
+      </div>
+    </div>
+  </noscript>
+  <script>
+    setTimeout(function () {
+      var r = document.getElementById('root');
+      var first = r && r.firstElementChild;
+      var stillLoading = first && first.getAttribute('data-loading') === 'true';
+      if (r && stillLoading) {
+        r.innerHTML = '<div class="html-shell"><div class="html-shell__panel"><p class="html-shell__eyebrow">NEOMAGIC</p><h1 class="html-shell__title">Unable to load the app</h1><p class="html-shell__body">Start the dev server with <strong>npm run dev</strong>, then open <strong>http://localhost:3000</strong>. If the issue continues, check the browser console.</p><div class="html-shell__code">npm run dev</div></div></div>';
+      }
+    }, 25000);
+  </script>
+</body>
+
+</html>

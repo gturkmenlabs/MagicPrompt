@@ -1,0 +1,29 @@
+{
+  "name": "@super-reasoning/shared",
+  "private": true,
+  "version": "3.2.0",
+  "type": "module",
+  "exports": {
+    "./services/*": "./services/*",
+    "./types/*": "./types/*",
+    "./types": "./types/index.ts",
+    "./dsl/*": "./dsl/*",
+    "./compilers/*": "./compilers/*"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.74.0",
+    "@google/genai": "^1.38.0",
+    "@openai/agents": "^0.4.10",
+    "@supabase/supabase-js": "^2.49.0",
+    "dotenv": "^16.6.1",
+    "js-yaml": "^4.1.1",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "typescript": "~5.8.2"
+  }
+}
