@@ -114,7 +114,7 @@ export async function requireAnyAuth(
   next: NextFunction
 ): Promise<void> {
   const hasBearer = req.headers.authorization?.startsWith('Bearer ');
-  const hasApiKey = !!(req.headers['x-api-key'] || req.query['x-api-key']);
+  const hasApiKey = !!req.headers['x-api-key'];
 
   if (hasBearer) {
     return requireSupabaseAuth(req, res, next);
@@ -145,7 +145,7 @@ export async function optionalAnyAuth(
   next: NextFunction
 ): Promise<void> {
   const hasBearer = req.headers.authorization?.startsWith('Bearer ');
-  const hasApiKey = !!(req.headers['x-api-key'] || req.query['x-api-key']);
+  const hasApiKey = !!req.headers['x-api-key'];
 
   if (hasBearer) {
     return requireSupabaseAuth(req, res, next);

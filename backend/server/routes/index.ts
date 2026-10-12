@@ -653,7 +653,7 @@ router.delete('/prompts/:id', ...withKey, apiRateLimiter, requireAnyAuth, requir
 
 /** POST /v1/auth/validate — API key dogrula (BYOK/Managed); OpenAPI auth/validate */
 router.post('/auth/validate', (req, res) => {
-  const key = (req.header('x-api-key') ?? req.body?.['x-api-key']) ?? '';
+  const key = req.header('x-api-key') ?? '';
   const result = validateApiKey(key, req, {
     byok: { validKeys: getValidKeys() },
   });

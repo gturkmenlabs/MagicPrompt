@@ -156,7 +156,7 @@ export function requireApiKey(req: Request, res: Response, next: NextFunction): 
     return next();
   }
 
-  const key = req.header(HEADER) ?? req.query['x-api-key'];
+  const key = req.header(HEADER);
   const resolved = resolveApiKey(key);
   if (!resolved) {
     if (typeof key !== 'string' || !key.trim()) {
@@ -184,7 +184,7 @@ export function optionalApiKey(req: Request, _res: Response, next: NextFunction)
     return next();
   }
 
-  const key = req.header(HEADER) ?? req.query['x-api-key'];
+  const key = req.header(HEADER);
   const resolved = resolveApiKey(key);
   if (resolved) {
     applyResolvedApiKey(req, resolved);

@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "tsx server/index.ts",
     "start": "tsx server/index.ts",
+    "verify:scripts": "node scripts/verify-scripts.mjs",
     "typecheck": "tsc --noEmit",
     "test:run": "vitest run",
-    "test:api:smoke": "vitest run server/lib/*.test.ts",
+    "test:api:smoke": "vitest run server/lib/*.test.ts server/middleware/*.test.ts",
     "migrate:up": "tsx server/db/migrate.ts",
     "migrate:down": "tsx server/db/migrate.ts down",
     "db:setup": "tsx server/scripts/db-setup.ts",
