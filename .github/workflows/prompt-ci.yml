@@ -7,12 +7,11 @@ name: Prompt Regression CI
 on:
   pull_request:
     paths:
-      - 'data/templates.ts'
-      - 'data/datasetPrompts.ts'
-      - 'data/notebookLmPrompts.ts'
-      - 'services/optimizerPrompts.ts'
-      - 'services/vibeCodingPrompts.ts'
-      - '.prompts/**'
+      - 'backend/.prompts/**'
+      - 'backend/server/scripts/run-regression-ci.ts'
+      - 'backend/server/lib/promptCorpus.ts'
+      - 'shared/data/**'
+      - 'frontend/src/data/**'
 
   workflow_dispatch:
     inputs:
@@ -49,7 +48,7 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Run prompt regression suite
-        run: npx tsx server/scripts/run-regression-ci.ts --ci --fail-on-regression
+        run: npm run regression:ci --workspace=backend
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

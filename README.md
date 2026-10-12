@@ -108,8 +108,8 @@ cd neomagic
 npm install
 
 # Set up environment
-cp backend/.env.example backend/.env
-# Edit .env with your API keys
+touch backend/.env
+# Edit backend/.env with your API keys
 
 # Start development
 npm run dev:all
@@ -177,8 +177,7 @@ Frontend starts at `http://localhost:3000`, API at `http://localhost:4000`.
 │
 ├── routing-service/          Standalone Fastify micro-service
 ├── sk-service/               Python FastAPI SK-RAG service
-├── docs/                     Project documentation
-└── extensions/vscode-extension/
+└── docs/                     Project documentation
 ```
 
 ### Key Architecture Decisions
@@ -266,7 +265,7 @@ GitHub Actions workflow with gates:
 - **New frontend files**: `frontend/src/`
 - **Shared business logic**: `shared/services/` or `shared/utils/`
 - **Backend endpoints**: `backend/server/routes/`
-- **TypeScript**: Strict mode with `strictNullChecks` active
+- **TypeScript**: Staged strict migration (`strictNullChecks` is active; full `strict` is not yet enabled)
 - **ESLint**: `no-console` (warn/error only), `no-explicit-any` as warning
 - **Styling**: Tailwind v3 with project tokens (cyber-primary, cyber-dark, glassmorphism)
 

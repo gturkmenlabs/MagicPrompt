@@ -8,8 +8,8 @@ export const validateBody = (schema: z.ZodSchema) => {
             req.body = schema.parse(req.body);
             next();
         } catch (error) {
-            if (error && typeof error === 'object' && 'errors' in error) {
-                const details = (error as any).errors.map((e: any) => ({
+            if (error instanceof z.ZodError) {
+                const details = error.issues.map((e) => ({
                     path: e.path.join('.'),
                     message: e.message
                 }));
